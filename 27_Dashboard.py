@@ -28,3 +28,16 @@ st.dataframe(tabla_datos) # Muestra la tabla de datos en el dashboard
 
 st.subheader("Estadísticas de Distancias") # Muestra un subtítulo en el dashboard
 promedio = tabla_datos["Distancia"].mean() # Calcula el promedio de la  columna "Distancia"     
+
+st.line_chart(tabla_datos["Distancia"]) # Muestra un gráfico de línea con los datos de la columna "Distancia"   
+tabla_datos["Distancia Ajustada"] = tabla_datos["Distancia"] + 2.0 # Crea una nueva columna "Distancia Ajustada" sumando 2 a la columna "Distancia"|    
+tabla_datos["Distancia Doble"] = tabla_datos["Distancia"] * 2 # Crea una nueva columna "Distancia Doble" multiplicando la columna "Distancia" por 2 
+
+st.line_chart(tabla_datos, x="Medicion", y=["Distancia", "Distancia Ajustada", "Distancia Doble"]) # Muestra un gráfico de línea con las columnas "Distancia", "Distancia Ajustada" y "Distancia Doble" en función de la columna "Medicion"     
+
+opcion = st.selectbox("Selecciona una opción", ["Promedio", "Máximo", "Mínimo"]) # Crea un menú desplegable para seleccionar una opción 
+
+st.line_chart(tabla_datos["Distancia"]) # Muestra un gráfico de línea con los datos de la columna "Distancia"   
+
+cantidad = st.number_input("Ingresa un valor numérico", min_value=0.0, max_value=30.0, value=15.0) # Crea un campo de entrada para ingresar un valor numérico   
+
